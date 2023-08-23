@@ -23,7 +23,7 @@ app.post("/api/notes", (req, res) => {
   const newNote = {
     title,
     text,
-    noteId: uniqid(),
+    id: uniqid(),
   };
 
   const response = {
@@ -41,12 +41,20 @@ app.post("/api/notes", (req, res) => {
       : console.log(`Note: ${newNote.title} - saved successfully`)
   );
 
-  console.log(response);
   res.status(201).json(response);
 });
 
 app.get("/api/notes", (req, res) => {
   res.send(db);
+});
+
+app.delete("/api/notes/:id", (req, res) => {
+  const notes = db;
+  const id = req.params;
+
+  console.log(notes.findIndex(id));
+
+  res.status(201).json(`successfully deleted note ${id}`);
 });
 
 app.get("*", (req, res) => {
