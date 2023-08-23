@@ -50,11 +50,20 @@ app.get("/api/notes", (req, res) => {
 
 app.delete("/api/notes/:id", (req, res) => {
   const notes = db;
-  const id = req.params;
+  const noteId = req.params.id;
 
-  console.log(notes.findIndex(id));
+  console.log(notes.findIndex((x) => x.id === noteId));
 
-  res.status(201).json(`successfully deleted note ${id}`);
+  notes.splice(
+    notes.findIndex((x) => x.id === noteId),
+    1
+  );
+
+  fs.writeFile("./db/db.json", JSON.stringify(notes), (err) =>
+    err ? console.log(err) : console.log(`Note Id: ${noteId} has been deleted`)
+  );
+
+  res.status(201).json(`successfully deleted note ${noteId}`);
 });
 
 app.get("*", (req, res) => {
