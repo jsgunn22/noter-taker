@@ -53,8 +53,7 @@ const deleteNote = (id) =>
 const renderActiveNote = () => {
   hide(saveNoteBtn);
 
-  // if the item has an id it will render else it will display empty text
-  if (activeNote.id !== null) {
+  if (activeNote.id) {
     noteTitle.setAttribute("readonly", true);
     noteText.setAttribute("readonly", true);
     noteTitle.value = activeNote.title;
