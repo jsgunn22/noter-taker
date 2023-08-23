@@ -78,6 +78,6 @@ app.get("*", (req, res) => {
 });
 
 // hosts application out of port.
-app.listen(PORT, () => {
+app.listen(process.env.PORT || PORT, () => {
   console.log(`Application is running at http://localhost:${PORT}`);
 });
