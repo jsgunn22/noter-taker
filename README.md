@@ -32,8 +32,8 @@ Usage is open source. Anyone with access to the url is able to use the applicati
 
 ## Credits
 
-Jeffrey - Backend
-UCD coding bootcamp - Front End
+- Jeffrey - Backend (server.js)
+- UCD coding bootcamp - Front End (all other code)
 
 ## License
 
